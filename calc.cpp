@@ -1,5 +1,6 @@
 #include <iostream>
 #include <limits>
+#include <string>
 
 void showMenu() {
     std::cout << "Simple Calculator\n";
@@ -12,7 +13,7 @@ void showMenu() {
     std::cout << "Choose an option: "; 
 }
 
-double getNumber(const std::string& prompt) {
+double getNumber(const std::string & prompt) {
     double number;
     while (true) {
         std::cout << prompt;
@@ -24,6 +25,22 @@ double getNumber(const std::string& prompt) {
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         } else {
             return number;
+        }
+    }
+}
+
+int getchoice() {
+    std::string input;
+    int choice;
+
+    while (true) {
+        std::getline(std::cin, input);
+        
+        try {
+            choice = std::stoi(input);
+            return choice;
+        } catch (...) {
+            std::cout << "invalid input. Please enter a number between 1 and 5: ";
         }
     }
 }
